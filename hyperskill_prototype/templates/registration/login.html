@@ -31,7 +31,9 @@
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
 
-  {# Assumes you setup the password_reset view in your URLconf #}
-  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-
+  <form method="post" action="{% url 'educational_platform:enter-as-guest' %}">
+    {% csrf_token %}
+    <input type="submit" value="Proceed as guest" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
 {% endblock %}

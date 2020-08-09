@@ -44,4 +44,8 @@ class TaskDetailView(LoginRequiredMixin, generic.DetailView):
 
 @allow_lazy_user
 def enter_as_guest(request):
-    return HttpResponseRedirect(reverse('educational_platform:index'))
+    next = request.POST.get('next')
+    if next:
+        return HttpResponseRedirect(next)
+    else:
+        return HttpResponseRedirect(reverse('educational_platform:index'))
