@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 
 
@@ -9,6 +10,10 @@ class PrototypeTask(models.Model):
     """
     def __str__(self):
         return str(self.pk)
+
+    def get_absolute_url(self):
+        """Returns the url to access a detail record for this book."""
+        return reverse('educational_platform:task-detail', args=[str(self.id)])
 
 
 class PrototypeUser(models.Model):
@@ -25,30 +30,30 @@ class PrototypeUser(models.Model):
     is_guest = models.BooleanField(default=True)
     # TODO: реализовать boolean-like поведение integer-поля is_guest
 
-    class Meta:
-        constraints = [
-            # CHECK (is_guest or not (name is null or email is null or registration_date is null))
-            models.CheckConstraint(
-                name='%(app_label)s_%(class)s_only_guest_can_be_nullable',
-                check=models.Q(
-                    is_guest=True,
-                )
-                | models.Q(
-                    is_guest=False,
-                    name__isnull=False,
-                    email__isnull=False,
-                    registration_date__isnull=False
-                ),
-            ),
-            models.CheckConstraint(
-                name='%(app_label)s_%(class)s_join_date_cannot_be_future_dated',
-                check=models.Q(join_date__lte=timezone.now())
-            ),
-            models.CheckConstraint(
-                name='%(app_label)s_%(class)s_registration_date_cannot_be_future_dated',
-                check=models.Q(registration_date__lte=timezone.now())
-            ),
-        ]
+    # class Meta:
+    #     constraints = [
+    #         # CHECK (is_guest or not (name is null or email is null or registration_date is null))
+    #         models.CheckConstraint(
+    #             name='%(app_label)s_%(class)s_only_guest_can_be_nullable',
+    #             check=models.Q(
+    #                 is_guest=True,
+    #             )
+    #             | models.Q(
+    #                 is_guest=False,
+    #                 name__isnull=False,
+    #                 email__isnull=False,
+    #                 registration_date__isnull=False
+    #             ),
+    #         ),
+    #         models.CheckConstraint(
+    #             name='%(app_label)s_%(class)s_join_date_cannot_be_future_dated',
+    #             check=models.Q(join_date__lte=timezone.now())
+    #         ),
+    #         models.CheckConstraint(
+    #             name='%(app_label)s_%(class)s_registration_date_cannot_be_future_dated',
+    #             check=models.Q(registration_date__lte=timezone.now())
+    #         ),
+    #     ]
 
     def __str__(self):
         if self.is_guest:

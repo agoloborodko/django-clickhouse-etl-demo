@@ -4,6 +4,7 @@ from . import views
 
 app_name = 'educational_platform'
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('<int:pk>/', views.DetailView.as_view(), name='task'),
+    path('', views.index, name='index'),
+    path('tasks/', views.TaskListView.as_view(), name='tasks'),
+    path('tasks/<int:pk>', views.TaskDetailView.as_view(), name='task-detail'),
 ]

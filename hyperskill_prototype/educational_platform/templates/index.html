@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Educational platform Home</h1>
+  <p>Welcome to Educational platform, a website developed by <em>agoloborodko</em>!</p>
+  <h2>Dynamic content</h2>
+  <p>The platform has the following record counts:</p>
+  <ul>
+    <li><strong>Tasks:</strong> {{ num_tasks }}</li>
+    <li><strong>Users:</strong> {{ num_users }}</li>
+    <li><strong>Events:</strong> {{ num_events }}</li>
+  </ul>
+{% endblock %}

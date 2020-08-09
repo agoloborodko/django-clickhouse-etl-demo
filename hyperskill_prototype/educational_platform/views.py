@@ -7,18 +7,29 @@ from django.utils import timezone
 from .models import PrototypeTask
 
 
-class IndexView(generic.ListView):
-    template_name = 'educational_platform/index.html'
-    context_object_name = 'task_list'
+def index(request):
+    """View function for home page of site."""
 
-    def get_queryset(self):
-        """
-        Return the last five published questions (not including those set to be
-        published in the future).
-        """
-        return PrototypeTask.objects.all()
+    # Generate counts of some of the main objects
+    num_tasks = PrototypeTask.objects.all().count()
+    num_users = 0
+    num_events = 0
+
+    context = {
+        'num_tasks': num_tasks,
+        'num_users': num_users,
+        'num_events': num_events,
+    }
+
+    # Render the HTML template index.html with the data in the context variable
+    return render(request, 'index.html', context=context)
 
 
-class DetailView(generic.DetailView):
-    template_name = 'educational_platform/task.html'
+class TaskListView(generic.ListView):
+    model = PrototypeTask
+    context_object_name = 'task_list'   # your own name for the list as a template variable
+    template_name = 'educational_platform/task_list.html'
+
+
+class TaskDetailView(generic.DetailView):
     model = PrototypeTask
