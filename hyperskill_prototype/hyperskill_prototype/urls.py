@@ -15,9 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-# Use static() to add url mapping to serve static files during development (only)
-from django.conf import settings
-from django.conf.urls.static import static
 from django.views.generic import RedirectView
 
 
@@ -26,5 +23,5 @@ urlpatterns = [
     path('tasks/', include('educational_platform.urls')),
     path('', RedirectView.as_view(url='tasks/', permanent=True)),
     path('accounts/', include('django.contrib.auth.urls')),
-] \
-              # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('accounts/', include('django_registration.backends.one_step.urls')),
+]
