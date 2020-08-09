@@ -42,11 +42,11 @@ class PrototypeUser(models.Model):
             ),
             models.CheckConstraint(
                 name='%(app_label)s_%(class)s_join_date_cannot_be_future_dated',
-                check=models.Q(join_date_lte=timezone.now())
+                check=models.Q(join_date__lte=timezone.now())
             ),
             models.CheckConstraint(
                 name='%(app_label)s_%(class)s_registration_date_cannot_be_future_dated',
-                check=models.Q(registration_date_lte=timezone.now())
+                check=models.Q(registration_date__lte=timezone.now())
             ),
         ]
 
