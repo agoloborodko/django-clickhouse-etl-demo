@@ -25,5 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('tasks/', include('educational_platform.urls')),
     path('', RedirectView.as_view(url='tasks/', permanent=True)),
+    path('accounts/', include('django.contrib.auth.urls')),
 ] \
               # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
