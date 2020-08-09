@@ -23,6 +23,7 @@
             <li>You are entered as guest</li>
             <li><a href="{% url 'lazysignup_convert' %}">{% trans "Create an account" %}</a></li>
             <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+            <li>Id: {{ user.get_username }}</li>
           {% elif user.is_authenticated %}
             <li>User: {{ user.get_username }}</li>
             <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
