@@ -16,8 +16,8 @@
       <div class="col-sm-2">
       {% block sidebar %}
         <ul class="sidebar-nav">
-          <li><a href="{% url 'educational_platform:index' %}">Home</a></li>
-          <li><a href="{% url 'educational_platform:tasks' %}">All tasks</a></li>
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'tasks' %}">All tasks</a></li>
         </ul>
           {% if user|is_lazy_user %}
             <li>You are entered as guest</li>
@@ -30,7 +30,7 @@
           {% else %}
             <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
             <li><a href="{% url 'django_registration_register'%}?next={{request.path}}">Register</a></li>
-            <li><a href="{% url 'educational_platform:enter-as-guest'%}?next={{request.path}}">Enter as guest</a></li>
+            <li><a href="{% url 'enter-as-guest'%}?next={{request.path}}">Enter as guest</a></li>
           {% endif %}
      {% endblock %}
       </div>

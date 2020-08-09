@@ -48,4 +48,4 @@ def enter_as_guest(request):
     if next:
         return HttpResponseRedirect(next)
     else:
-        return HttpResponseRedirect(reverse('educational_platform:index'))
+        return HttpResponseRedirect(reverse('index'))

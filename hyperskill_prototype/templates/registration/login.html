@@ -31,7 +31,7 @@
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
 
-  <form method="post" action="{% url 'educational_platform:enter-as-guest' %}">
+  <form method="post" action="{% url 'enter-as-guest' %}">
     {% csrf_token %}
     <input type="submit" value="Proceed as guest" />
     <input type="hidden" name="next" value="{{ next }}" />
