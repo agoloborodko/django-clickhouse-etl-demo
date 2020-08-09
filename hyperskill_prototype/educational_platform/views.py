@@ -33,3 +33,5 @@ class TaskListView(generic.ListView):
 
 class TaskDetailView(generic.DetailView):
     model = PrototypeTask
+    template_name = 'educational_platform/task_detail.html'
+    context_object_name = 'task'

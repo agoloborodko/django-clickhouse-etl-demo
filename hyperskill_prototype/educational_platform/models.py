@@ -12,7 +12,7 @@ class PrototypeTask(models.Model):
         return str(self.pk)
 
     def get_absolute_url(self):
-        """Returns the url to access a detail record for this book."""
+        """Returns the url to access a detail record for this task."""
         return reverse('educational_platform:task-detail', args=[str(self.id)])
 
 
