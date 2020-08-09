@@ -29,6 +29,7 @@ class TaskListView(generic.ListView):
     model = PrototypeTask
     context_object_name = 'task_list'   # your own name for the list as a template variable
     template_name = 'educational_platform/task_list.html'
+    paginate_by = 30
 
 
 class TaskDetailView(generic.DetailView):
