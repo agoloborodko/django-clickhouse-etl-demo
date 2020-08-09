@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'educational_platform',
+    'lazysignup',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -83,6 +84,12 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+AUTHENTICATION_BACKENDS = (
+  'django.contrib.auth.backends.ModelBackend',
+  'lazysignup.backends.LazySignupBackend',
+)
 
 
 # Password validation

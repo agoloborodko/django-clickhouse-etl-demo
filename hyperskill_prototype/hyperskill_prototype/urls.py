@@ -20,8 +20,10 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('tasks/', include('educational_platform.urls')),
-    path('', RedirectView.as_view(url='tasks/', permanent=True)),
+    path('edu/', include('educational_platform.urls')),
+    path('', RedirectView.as_view(url='edu/', permanent=True)),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('django_registration.backends.one_step.urls')),
+    path('convert/', include('lazysignup.urls')),
+    # TODO: только lazy uzer может переходить по convert
 ]

@@ -3,6 +3,10 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from lazysignup.decorators import allow_lazy_user
+from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from lazysignup.utils import is_lazy_user
 
 from .models import PrototypeTask
 
@@ -32,7 +36,12 @@ class TaskListView(generic.ListView):
     paginate_by = 30
 
 
-class TaskDetailView(generic.DetailView):
+class TaskDetailView(LoginRequiredMixin, generic.DetailView):
     model = PrototypeTask
     template_name = 'educational_platform/task_detail.html'
     context_object_name = 'task'
+
+
+@allow_lazy_user
+def enter_as_guest(request):
+    return HttpResponseRedirect(reverse('educational_platform:index'))
