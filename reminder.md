@@ -7,3 +7,5 @@
 2.1) python manage.py runserver
 2.2) pip install -r requirements.txt
 2.3) создание первычных Actions
+3) Создание юзеров
+3.1) Создать группу
