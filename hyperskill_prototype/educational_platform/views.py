@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from lazysignup.utils import is_lazy_user
 
-from .models import PrototypeTask
+from .models import PrototypeTask, PrototypeUser
 
 
 def index(request):
@@ -16,7 +16,7 @@ def index(request):
 
     # Generate counts of some of the main objects
     num_tasks = PrototypeTask.objects.all().count()
-    num_users = 0
+    num_users = PrototypeUser.objects.all().count()
     num_events = 0
 
     context = {
