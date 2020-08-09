@@ -22,6 +22,7 @@ class PrototypeUser(models.Model):
     join_date = models.DateTimeField(auto_now_add=True)
     registration_date = models.DateTimeField(null=True)
     is_guest = models.BooleanField(default=True)
+    # TODO: реализовать boolean-like поведение integer-поля is_guest
 
     class Meta:
         constraints = [
@@ -39,13 +40,12 @@ class PrototypeUser(models.Model):
                 name='only_guest_can_be_nullable'
             ),
         ]
-    # TODO: реализовать boolean-like поведение integer-поля is_guest
 
     def __str__(self):
         if self.is_guest:
             return f'Guest #{self.pk}'
         else:
-            return self.name
+            return f'{self.name} #{self.pk}'
 
 
 class PrototypeEvent(models.Model):
