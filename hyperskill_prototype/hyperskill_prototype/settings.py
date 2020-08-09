@@ -134,3 +134,5 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/'
 
 REGISTRATION_OPEN = True
+
+AUTH_USER_MODEL = 'educational_platform.PrototypeUser'
