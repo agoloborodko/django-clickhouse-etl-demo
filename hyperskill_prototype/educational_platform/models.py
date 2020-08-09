@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class PrototypeTask(models.Model):
@@ -28,6 +29,7 @@ class PrototypeUser(models.Model):
         constraints = [
             # CHECK (is_guest or not (name is null or email is null or registration_date is null))
             models.CheckConstraint(
+                name='%(app_label)s_%(class)s_only_guest_can_be_nullable',
                 check=models.Q(
                     is_guest=True,
                 )
@@ -37,7 +39,14 @@ class PrototypeUser(models.Model):
                     email__isnull=False,
                     registration_date__isnull=False
                 ),
-                name='only_guest_can_be_nullable'
+            ),
+            models.CheckConstraint(
+                name='%(app_label)s_%(class)s_join_date_cannot_be_future_dated',
+                check=models.Q(join_date_lte=timezone.now())
+            ),
+            models.CheckConstraint(
+                name='%(app_label)s_%(class)s_registration_date_cannot_be_future_dated',
+                check=models.Q(registration_date_lte=timezone.now())
             ),
         ]
 
