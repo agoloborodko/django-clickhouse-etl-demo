@@ -8,7 +8,7 @@
 {% if task_list %}
     <ul>
     {% for task in task_list %}
-        <li><a href="{% url 'educational_platform:task' task.id %}">{{ task }}</a></li>
+        <li><a href="{% url 'educational_platform:task' task.id %}">Task {{ task }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
