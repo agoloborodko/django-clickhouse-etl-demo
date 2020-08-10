@@ -2,6 +2,8 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
+from django.dispatch import receiver
+from lazysignup.signals import converted
 
 
 class PrototypeTask(models.Model):
@@ -14,7 +16,7 @@ class PrototypeTask(models.Model):
 
     def get_absolute_url(self):
         """Returns the url to access a detail record for this task."""
-        return reverse('educational_platform:task-detail', args=[str(self.id)])
+        return reverse('task-detail', args=[str(self.id)])
 
 
 class PrototypeUser(AbstractUser):
@@ -32,3 +34,12 @@ class PrototypeEvent(models.Model):
     action_id = models.SmallIntegerField(choices=ACTIONS)
     target_id = models.ForeignKey(PrototypeTask, on_delete=models.PROTECT)
     user_id = models.ForeignKey(PrototypeUser, on_delete=models.PROTECT)
+
+
+@receiver(converted)
+def add_converted_user_registration_date(sender, **kwargs):
+    user = kwargs['user']
+    if not user.registration_date:
+        user.registration_date = timezone.now()
+        user.is_guest = 0
+        user.save()
