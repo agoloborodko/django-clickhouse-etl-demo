@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from lazysignup.utils import is_lazy_user
 
 from .models import PrototypeTask, PrototypeUser, PrototypeEvent
+from .forms import TaskSubmitForm
 
 
 def index(request):
@@ -36,10 +37,12 @@ class TaskListView(generic.ListView):
     paginate_by = 30
 
 
-class TaskDetailView(LoginRequiredMixin, generic.DetailView):
+class TaskDetailView(LoginRequiredMixin, generic.DetailView, generic.edit.FormView):
     model = PrototypeTask
     template_name = 'educational_platform/task_detail.html'
     context_object_name = 'task'
+    form_class = TaskSubmitForm
+    success_url = 'success'
 
     # Создает инстанс PrototypeEvent с типом "0" (юзер увидел задачу)
     def get_object(self):
@@ -53,6 +56,25 @@ class TaskDetailView(LoginRequiredMixin, generic.DetailView):
         )
         event.save()
         return obj
+
+    def get_context_data(self, **kwargs):
+        context = super(TaskDetailView, self).get_context_data(**kwargs)
+        context['form'] = TaskSubmitForm
+        return context
+
+    def post(self, request, *args, **kwargs):
+        return generic.edit.FormView.post(self, request, *args, **kwargs)
+
+    def form_valid(self, form):
+        user = self.request.user
+        task = super().get_object()
+        action = form.cleaned_data.get('action')
+        form.submit_task(user, task, action)
+        return super().form_valid(form)
+
+
+def submit_success(request):
+    return render(request, 'educational_platform/success.html')
 
 
 @allow_lazy_user

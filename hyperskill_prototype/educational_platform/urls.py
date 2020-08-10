@@ -15,4 +15,5 @@ urlpatterns = [
     path('accounts/', include('django_registration.backends.one_step.urls')),
     path('convert/', include('lazysignup.urls')),
     # TODO: только lazy uzer может переходить по convert
+    path('tasks/success', views.submit_success, name='task_submit_success')
 ]

@@ -1,7 +1,8 @@
 from django_registration.forms import RegistrationForm
+from django import forms
 from django.utils import timezone
 
-from .models import PrototypeUser
+from .models import PrototypeUser, PrototypeEvent
 
 
 class PrototypeUserForm(RegistrationForm):
@@ -15,3 +16,19 @@ class PrototypeUserForm(RegistrationForm):
         if commit:
             user.save()
         return user
+
+
+class TaskSubmitForm(forms.Form):
+    CHOICES = [(1, 'Submit'),
+               (2, 'Resolve')]
+    action = forms.CharField(widget=forms.RadioSelect(choices=CHOICES))
+
+    @staticmethod
+    def submit_task(user, task, action):
+        event = PrototypeEvent(
+            time=timezone.now(),
+            action_id=action,
+            target=task,
+            user=user
+        )
+        event.save()

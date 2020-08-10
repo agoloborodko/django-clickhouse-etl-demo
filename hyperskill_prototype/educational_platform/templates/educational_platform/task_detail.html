@@ -3,4 +3,10 @@
 {% block content %}
   <h1>Task {{ task }}</h1>
   <p><strong>Summary:</strong> summary of task {{ task }}</p>
+
+  <form action="{% url 'task-detail' pk=task.pk %}" method="post">
+      {% csrf_token %}
+      {{form.action}}
+      <input type="submit" value="OK">
+  </form>
 {% endblock %}
