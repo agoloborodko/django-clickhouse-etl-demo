@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from lazysignup.utils import is_lazy_user
 
-from .models import PrototypeTask, PrototypeUser
+from .models import PrototypeTask, PrototypeUser, PrototypeEvent
 
 
 def index(request):
@@ -40,6 +40,19 @@ class TaskDetailView(LoginRequiredMixin, generic.DetailView):
     model = PrototypeTask
     template_name = 'educational_platform/task_detail.html'
     context_object_name = 'task'
+
+    # Создает инстанс PrototypeEvent с типом "0" (юзер увидел задачу)
+    def get_object(self):
+        obj = super().get_object()
+        current_user = self.request.user
+        event = PrototypeEvent(
+            time=timezone.now(),
+            action_id=0,
+            target_id=obj,
+            user_id=current_user
+        )
+        event.save()
+        return obj
 
 
 @allow_lazy_user
