@@ -32,8 +32,8 @@ class PrototypeEvent(models.Model):
     ]
     time = models.DateTimeField()
     action_id = models.SmallIntegerField(choices=ACTIONS)
-    target_id = models.ForeignKey(PrototypeTask, on_delete=models.PROTECT)
-    user_id = models.ForeignKey(PrototypeUser, on_delete=models.PROTECT)
+    target = models.ForeignKey(PrototypeTask, on_delete=models.PROTECT)
+    user = models.ForeignKey(PrototypeUser, on_delete=models.PROTECT)
 
 
 @receiver(converted)

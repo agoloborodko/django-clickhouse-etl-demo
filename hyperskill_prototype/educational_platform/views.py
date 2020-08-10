@@ -48,8 +48,8 @@ class TaskDetailView(LoginRequiredMixin, generic.DetailView):
         event = PrototypeEvent(
             time=timezone.now(),
             action_id=0,
-            target_id=obj,
-            user_id=current_user
+            target=obj,
+            user=current_user
         )
         event.save()
         return obj
