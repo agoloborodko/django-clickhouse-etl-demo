@@ -2,7 +2,7 @@ from django_registration.forms import RegistrationForm
 from django import forms
 from django.utils import timezone
 
-from .models import PrototypeUser, PrototypeEvent
+from .models import PrototypeUser
 
 
 class PrototypeUserForm(RegistrationForm):
