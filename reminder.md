@@ -1,11 +1,10 @@
 #Не забыть:
-1) При первом запуске проекта кто-то должен сделать:
-1.1) manage.py makemigrations appname
-1.2) python manage.py migrate
-1.3) python manage.py createsuperuser
-2) Прописать в докерфайле:
-2.1) python manage.py runserver
-2.2) pip install -r requirements.txt
-2.3) создание первычных Actions
-3) Создание юзеров
-3.1) Создать группу
+hyperskill_prototype:
+1) pip install -r requirements.txt
+2) manage.py makemigrations educational_platform
+3) python manage.py migrate
+4) python manage.py createsuperuser
+5) python manage.py runserver
+
+hyperskill_simulator:
+1) pip install -r requirements.txt
