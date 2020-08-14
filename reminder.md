@@ -10,6 +10,13 @@ hyperskill_prototype:
 6) для superuser должна быть настройка логина и пароля в докерфайле
 7) django secret key надо куда-то убрать
 
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+
+https://stackoverflow.com/questions/57873434/dockerdjangosecret-key-regenerate
+
+dd if=/dev/urandom bs=60 count=1 | base64
+
+
 hyperskill_simulator:
 1) pip install -r requirements.txt
 2) https://www.blazemeter.com/blog/how-to-run-locust-with-different-users
