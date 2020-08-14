@@ -1,7 +1,8 @@
 FROM python:3
 ENV PYTHONUNBUFFERED 1
-RUN mkdir /code
-WORKDIR /code
-COPY hyperskill_prototype/requirements.txt /code/
+RUN mkdir /app
+WORKDIR /app
+COPY hyperskill_prototype/* /app/
 RUN pip install -r requirements.txt
-COPY . /code/
+COPY . /app/
+RUN python manage.py runserver
