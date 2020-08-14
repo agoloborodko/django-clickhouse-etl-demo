@@ -62,14 +62,17 @@ class TaskDetailView(LoginRequiredMixin, generic.DetailView, generic.edit.FormVi
         context['form'] = TaskSubmitForm
         return context
 
-    def post(self, request, *args, **kwargs):
-        return generic.edit.FormView.post(self, request, *args, **kwargs)
-
     def form_valid(self, form):
         user = self.request.user
         task = super().get_object()
         action = form.cleaned_data.get('action')
-        form.submit_task(user, task, action)
+        event = PrototypeEvent(
+            time=timezone.now(),
+            action_id=action,
+            target=task,
+            user=user
+        )
+        event.save()
         return super().form_valid(form)
 
 

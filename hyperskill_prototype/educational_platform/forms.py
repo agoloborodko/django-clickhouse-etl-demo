@@ -22,13 +22,3 @@ class TaskSubmitForm(forms.Form):
     CHOICES = [(1, 'Submit'),
                (2, 'Resolve')]
     action = forms.CharField(widget=forms.RadioSelect(choices=CHOICES))
-
-    @staticmethod
-    def submit_task(user, task, action):
-        event = PrototypeEvent(
-            time=timezone.now(),
-            action_id=action,
-            target=task,
-            user=user
-        )
-        event.save()
