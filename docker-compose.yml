@@ -55,6 +55,11 @@ services:
     - POSTGRES_USER=db_user
     - POSTGRES_PASSWORD=db_pass
     - POSTGRES_DB=prototype_dwh
+    - FOREIGN_DB=prototype_database
+    - FOREIGN_USER=db_user
+    - FOREIGN_PASS=db_pass
     container_name: prototype_dwh
     ports:
     - 1020:5432
+    links:
+    - pg_database
