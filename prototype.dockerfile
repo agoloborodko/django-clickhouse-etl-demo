@@ -1,8 +1,13 @@
 FROM python:3
 ENV PYTHONUNBUFFERED 1
-RUN mkdir /hyperskill_prototype
-WORKDIR /hyperskill_prototype
-COPY hyperskill_prototype/ /hyperskill_prototype/
+
+RUN mkdir -p /home/hyperskill_prototype
+WORKDIR /home/hyperskill_prototype
+COPY hyperskill_prototype/ .
+
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["hyperskill_prototype/entrypoint.sh"]
+RUN chmod -R 0777 .
+
+ENTRYPOINT ["/home/hyperskill_prototype/entrypoint.sh"]
