@@ -1,5 +1,23 @@
 #Не забыть:
-hyperskill_prototype:
+**docker-compose:**
+
+*Задокументировать environment variables* 
+
+database:
+- POSTGRES_USER
+- POSTGRES_PASSWORD
+- POSTGRES_DB
+
+prototype:
+- DB_USER=db_user
+- DB_PASS=db_pass
+- DB_NAME=prototype_database
+- DB_HOST=database
+- DB_PORT=5432
+
+*Задокументировать отсутствие volumes*
+
+**hyperskill_prototype:**
 1) pip install -r requirements.txt
    
    pip install --upgrade pip
@@ -17,7 +35,7 @@ https://stackoverflow.com/questions/57873434/dockerdjangosecret-key-regenerate
 dd if=/dev/urandom bs=60 count=1 | base64
 
 
-hyperskill_simulator:
+**hyperskill_simulator:**
 1) pip install -r requirements.txt
 2) https://www.blazemeter.com/blog/how-to-run-locust-with-different-users
 3) https://docs.locust.io/en/stable/quickstart.html
