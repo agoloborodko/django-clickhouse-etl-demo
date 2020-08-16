@@ -12,4 +12,4 @@ echo "PostgreSQL started"
 python manage.py flush --no-input
 python manage.py makemigrations educational_platform
 python manage.py migrate
-python manage.py runserver
+python manage.py runserver 0.0.0.0:8000

@@ -20,21 +20,9 @@ prototype:
 *Задокументировать порты и имена контейнеров*
 
 **hyperskill_prototype:**
-1) pip install -r requirements.txt
-   
-   pip install --upgrade pip
-2) manage.py makemigrations educational_platform
-3) python manage.py migrate
-4) python manage.py createsuperuser
-5) python manage.py runserver
-6) для superuser должна быть настройка логина и пароля в докерфайле
-7) django secret key надо куда-то убрать
-
-SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
-
-https://stackoverflow.com/questions/57873434/dockerdjangosecret-key-regenerate
-
-dd if=/dev/urandom bs=60 count=1 | base64
+1) python manage.py createsuperuser
+2) для superuser должна быть настройка логина и пароля в докерфайле
+3) Задокументировать ALLOWED_HOSTS = ['*']
 
 
 **hyperskill_simulator:**
