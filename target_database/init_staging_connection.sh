@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+
+psql << EOF
 CREATE EXTENSION IF NOT EXISTS postgres_fdw;
 
 CREATE SERVER IF NOT EXISTS prototype_server 
@@ -22,3 +25,4 @@ IMPORT FOREIGN SCHEMA public
 	FROM SERVER prototype_server
 	INTO stage_prototype
 ;
+EOF
