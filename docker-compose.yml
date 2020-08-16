@@ -18,7 +18,7 @@ services:
       dockerfile: prototype.dockerfile
     container_name: prototype_container
     ports:
-      - 2999:8080
+      - 2999:8000
     environment:
       - DB_USER=db_user
       - DB_PASS=db_pass

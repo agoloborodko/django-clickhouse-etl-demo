@@ -17,6 +17,8 @@ prototype:
 
 *Задокументировать отсутствие volumes*
 
+*Задокументировать порты и имена контейнеров*
+
 **hyperskill_prototype:**
 1) pip install -r requirements.txt
    
