@@ -12,5 +12,5 @@ echo "PostgreSQL started"
 python manage.py flush --no-input
 python manage.py makemigrations educational_platform
 python manage.py migrate
-echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'pass')" | python manage.py shell
+echo "from educational_platform.models import PrototypeUser; PrototypeUser.objects.create_superuser('admin', 'admin@example.com', 'pass')" | python manage.py shell
 python manage.py runserver 0.0.0.0:8000
