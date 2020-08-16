@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.views import generic
@@ -85,3 +85,9 @@ def enter_as_guest(request):
         return HttpResponseRedirect(next)
     else:
         return HttpResponseRedirect(reverse('index'))
+
+
+# Костыль. Используется для того, чтобы HTTP-клиент (например, locust) мог получить количество объектов Task
+def task_count(request):
+    num_tasks = PrototypeTask.objects.all().count()
+    return HttpResponse(num_tasks)

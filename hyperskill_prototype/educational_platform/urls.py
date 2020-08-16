@@ -15,5 +15,7 @@ urlpatterns = [
     path('accounts/', include('django_registration.backends.one_step.urls')),
     path('convert/', include('lazysignup.urls')),
     # TODO: только lazy uzer может переходить по convert
-    path('tasks/success', views.submit_success, name='task_submit_success')
+    path('tasks/success', views.submit_success, name='task_submit_success'),
+    path('tasks/count', views.task_count, name='tasks_count')
+    # Костыль. Используется для того, чтобы HTTP-клиент (например, locust) мог получить количество объектов Task
 ]
