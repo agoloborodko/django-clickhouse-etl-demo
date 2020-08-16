@@ -51,7 +51,7 @@ services:
     build:
       context: .
       dockerfile: clickhouse.dockerfile
-  container_name: prototype_clickhouse
+    container_name: prototype_clickhouse
     links:
       - pg_database
     depends_on:
