@@ -52,7 +52,5 @@ services:
       context: .
       dockerfile: clickhouse.dockerfile
     container_name: prototype_clickhouse
-    links:
-      - pg_database
-    depends_on:
-      - pg_database
+    ports:
+      - 8123:8123
