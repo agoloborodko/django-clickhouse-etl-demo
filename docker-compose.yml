@@ -15,13 +15,6 @@ services:
   prototype:
     build:
       context: .
-      args:
-        - DB_USER=db_user
-        - DB_PASS=db_pass
-        - DB_NAME=prototype_database
-        - DB_HOST=database
-        - DB_PORT=5432
-        - DJANGO_SECRET_KEY=WIfxHMwA095VLMMbU5zFrg1VpMlCGLpNc98jI
       dockerfile: prototype.dockerfile
     container_name: prototype_container
     ports:
