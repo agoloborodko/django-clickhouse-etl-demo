@@ -1,2 +1,2 @@
 FROM library/postgres
-COPY /target_database/. /docker-entrypoint-initdb.d/
+COPY target_database/. /docker-entrypoint-initdb.d/
