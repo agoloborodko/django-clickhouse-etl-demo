@@ -5,7 +5,7 @@ from itertools import count
 
 class AdminUser(HttpUser):
     weight = 1
-    wait_time = between(1, 10)
+    wait_time = between(10, 30)
 
     @task
     def add_task(self):
