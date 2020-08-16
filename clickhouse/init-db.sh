@@ -4,6 +4,6 @@ set -e
 clickhouse client -n <<-EOSQL
     CREATE DATABASE prototype_dwh;
     CREATE USER prototype_admin IDENTIFIED BY 'pass';
-    GRANT ALL ON prototype_dwh TO prototype_admin WITH GRANT OPTION;
+    ALTER USER prototype_admin SETTINGS allow_introspection_functions=1
+    GRANT ALL ON *.* TO prototype_admin WITH GRANT OPTION;
 EOSQL
-#    CREATE TABLE docker.docker (x Int32) ENGINE = Log;
