@@ -20,8 +20,7 @@ prototype:
 *Задокументировать порты и имена контейнеров*
 
 **hyperskill_prototype:**
-1) python manage.py createsuperuser
-2) для superuser должна быть настройка логина и пароля в докерфайле
+2) Задокументировать создание superuser в entrypoint.sh
 3) Задокументировать ALLOWED_HOSTS = ['*']
 
 
@@ -29,3 +28,4 @@ prototype:
 1) pip install -r requirements.txt
 2) https://www.blazemeter.com/blog/how-to-run-locust-with-different-users
 3) https://docs.locust.io/en/stable/quickstart.html
+4) создание тасков админом
