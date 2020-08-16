@@ -23,7 +23,7 @@
 
         <!-- Profile that allows only read queries. -->
         <readonly>
-            <readonly>1</readonly>
+            <readonly>0</readonly>
         </readonly>
     </profiles>
 
