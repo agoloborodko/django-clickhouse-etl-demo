@@ -40,6 +40,11 @@ services:
     container_name: prototype_simulator
     ports:
       - "8089:8089"
+    environment:
+      - HOST=prototype
+      - PORT=8000
+      - USERS_NUM=100
+      - HATCH_RATE=5
     links:
       - prototype
     depends_on:

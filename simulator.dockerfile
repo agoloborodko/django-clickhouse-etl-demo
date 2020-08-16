@@ -1,3 +1,3 @@
 FROM locustio/locust
 COPY hyperskill_simulator/ .
-ENTRYPOINT ["locust"]
+ENTRYPOINT ["locust --config=locust.conf"]
