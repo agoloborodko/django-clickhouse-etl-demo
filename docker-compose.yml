@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  database:
+  pg_database:
     build:
       context: .
       dockerfile: db.dockerfile
@@ -23,16 +23,16 @@ services:
       - DB_USER=db_user
       - DB_PASS=db_pass
       - DB_NAME=prototype_database
-      - DB_HOST=database
+      - DB_HOST=pg_database
       - DB_PORT=5432
       - DJANGO_SECRET_KEY=WIfxHMwA095VLMMbU5zFrg1VpMlCGLpNc98jI
       - SUPERUSER_NAME=admin
       - SUPERUSER_EMAIL=admin@example.com
       - SUPERUSER_PASS=pass
     links:
-      - database
+      - pg_database
     depends_on:
-      - database
+      - pg_database
   simulator:
     build:
       context: .
@@ -47,3 +47,12 @@ services:
       - prototype
     depends_on:
       - prototype
+  clickhouse:
+    build:
+      context: .
+      dockerfile: clickhouse.dockerfile
+  container_name: prototype_clickhouse
+    links:
+      - pg_database
+    depends_on:
+      - pg_database
