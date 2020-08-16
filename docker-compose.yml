@@ -36,7 +36,7 @@ services:
   simulator:
     build:
       context: .
-      dockerfile: db.dockerfile
+      dockerfile: simulator.dockerfile
     container_name: prototype_simulator
     ports:
       - "8089:8089"
