@@ -16,7 +16,7 @@ def index(request):
     # Generate counts of some of the main objects
     num_tasks = PrototypeTask.objects.all().count()
     num_users = PrototypeUser.objects.all().count()
-    num_events = 0
+    num_events = PrototypeEvent.objects.all().count()
 
     context = {
         'num_tasks': num_tasks,
