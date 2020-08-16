@@ -38,13 +38,11 @@ services:
       context: .
       dockerfile: simulator.dockerfile
     container_name: prototype_simulator
-    ports:
-      - "8089:8089"
     environment:
       - HOST=prototype
       - PORT=8000
-      - USERS_NUM=100
-      - HATCH_RATE=5
+      - USERS_NUM=1000
+      - HATCH_RATE=2
     links:
       - prototype
     depends_on:
