@@ -33,3 +33,14 @@ services:
       - database
     depends_on:
       - database
+  simulator:
+    build:
+      context: .
+      dockerfile: db.dockerfile
+    container_name: prototype_simulator
+    ports:
+      - "8089:8089"
+    links:
+      - prototype
+    depends_on:
+      - prototype
