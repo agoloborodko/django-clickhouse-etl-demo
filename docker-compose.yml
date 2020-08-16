@@ -41,7 +41,7 @@ services:
     environment:
       - HOST=prototype
       - PORT=8000
-      - USERS_NUM=1000
+      - USERS_NUM=90
       - HATCH_RATE=2
     links:
       - prototype
