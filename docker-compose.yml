@@ -48,9 +48,13 @@ services:
     depends_on:
       - prototype
   clickhouse:
-    build:
-      context: .
-      dockerfile: clickhouse.dockerfile
+    image: flexberry/clickhouse-official
     container_name: prototype_clickhouse
     ports:
       - 8123:8123
+      - 9000:9000
+    volumes:
+      - clickhousedb:/var/lib/clickhouse
+
+volumes:
+  clickhousedb:
