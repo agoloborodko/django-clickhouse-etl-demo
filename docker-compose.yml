@@ -50,7 +50,7 @@ services:
   pg_target_database:
     build:
       context: .
-      dockerfile: db.dockerfile
+      dockerfile: target_db.dockerfile
     environment:
     - POSTGRES_USER=db_user
     - POSTGRES_PASSWORD=db_pass
