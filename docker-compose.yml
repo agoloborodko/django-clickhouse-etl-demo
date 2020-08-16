@@ -55,6 +55,14 @@ services:
       - 9000:9000
     volumes:
       - clickhousedb:/var/lib/clickhouse
+    environment:
+      - PGDatabase: prototype_database
+      - PGServername: pg_database
+      - PGUserName: db_user
+      - PGPassword: db_pass
+      - PGPort: 5432
+    links:
+      - pg_database
 
 volumes:
   clickhousedb:
