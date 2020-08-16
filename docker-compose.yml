@@ -47,22 +47,14 @@ services:
       - prototype
     depends_on:
       - prototype
-  clickhouse:
-    image: flexberry/clickhouse-official
-    container_name: prototype_clickhouse
-    ports:
-      - 8123:8123
-      - 9000:9000
-    volumes:
-      - clickhousedb:/var/lib/clickhouse
+  pg_target_database:
+    build:
+      context: .
+      dockerfile: db.dockerfile
     environment:
-      - PGDatabase=prototype_database
-      - PGServername=pg_database
-      - PGUserName=db_user
-      - PGPassword=db_pass
-      - PGPort=5432
-    links:
-      - pg_database
-
-volumes:
-  clickhousedb:
+    - POSTGRES_USER=db_user
+    - POSTGRES_PASSWORD=db_pass
+    - POSTGRES_DB=prototype_dwh
+    container_name: prototype_dwh
+    ports:
+    - 1020:5432
