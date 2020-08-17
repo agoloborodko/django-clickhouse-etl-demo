@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-psql << EOF
+psql -U ${POSTGRES_USER} -d ${POSTGRES_DB} << EOF
 CREATE EXTENSION IF NOT EXISTS postgres_fdw;
 
 CREATE SERVER IF NOT EXISTS prototype_server 
