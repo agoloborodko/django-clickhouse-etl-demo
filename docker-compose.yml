@@ -58,6 +58,8 @@ services:
     - FOREIGN_DB=prototype_database
     - FOREIGN_USER=db_user
     - FOREIGN_PASS=db_pass
+    - TZ='GMT+3'
+    - PGTZ='GMT+3'
     container_name: prototype_dwh
     ports:
     - 1020:5432
