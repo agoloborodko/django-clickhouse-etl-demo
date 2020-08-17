@@ -1,5 +1,6 @@
 FROM library/postgres
-RUN apt-get update && apt-get -y install cron
+RUN apt-get update && apt-get -y install cron && \
+    mkdir /home/elt/
 COPY target_database/scripts/cron_elt /home/elt/cron_elt
 RUN chmod 0644 /etc/cron.d/cron_elt && \
     chmod 0777 -R /var/log/ && \
