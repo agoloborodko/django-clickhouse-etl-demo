@@ -78,3 +78,5 @@ services:
     - PERIOD=300
     links:
       - pg_target_database
+    depends_on:
+      - pg_target_database
