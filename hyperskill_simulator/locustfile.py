@@ -53,20 +53,20 @@ class Visitor(HttpUser):
             headers={'X-CSRFToken': csrftoken}
         )
 
-    @task(5)
+    @task(10)
     def index_page(self):
         self.client.get("/edu")
         self.client.get("/edu/tasks")
 
-    @task(20)
+    @task(40)
     def submit_task(self):
         self.send_task(1)
 
-    @task(10)
+    @task(20)
     def resolve_task(self):
         self.send_task(2)
 
-    @task(10)
+    @task(20)
     def view_task(self):
         item_id = self.select_task()
         self.client.get(f"/edu/tasks/{item_id}")
