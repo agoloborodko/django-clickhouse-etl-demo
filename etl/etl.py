@@ -57,8 +57,8 @@ def get_insert_into(DWH_VAR_INIT_VALUE, DWH_VAR_CUR_VALUE):
             JOIN stage_prototype.educational_platform_prototypeuser usr
             ON usr.id = evn.user_id 
         WHERE 
-            evn."time" BETWEEN '{DWH_VAR_INIT_VALUE.strftime(format='%Y-%m-%d %H:%M:%S')}'::timestamp 
-                        AND '{DWH_VAR_CUR_VALUE.strftime(format='%Y-%m-%d %H:%M:%S')}'::timestamp
+            evn."time" >= '{DWH_VAR_INIT_VALUE.strftime(format='%Y-%m-%d %H:%M:%S')}'::timestamp 
+            AND evn."time" < '{DWH_VAR_CUR_VALUE.strftime(format='%Y-%m-%d %H:%M:%S')}'::timestamp
         ;
     """
     return script_insert_into
