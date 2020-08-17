@@ -3,7 +3,7 @@ RUN apt-get update && apt-get -y install cron
 COPY target_database/scripts/cron_elt /home/elt/cron_elt
 RUN chmod 0644 /etc/cron.d/cron_elt && \
     chmod 0777 -R /var/log/ && \
-    chmod 0777 -R /var/run/
+    chmod 0777 -R /var/run/ && \
     chmod 0777 -R /home/elt/
 COPY target_database/docker-entrypoint-initdb.d/ /docker-entrypoint-initdb.d/
 RUN chmod -R 0777 /docker-entrypoint-initdb.d/ && \
