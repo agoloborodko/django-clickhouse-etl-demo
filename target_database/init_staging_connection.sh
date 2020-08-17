@@ -7,15 +7,15 @@ CREATE SERVER IF NOT EXISTS prototype_server
 	FOREIGN DATA WRAPPER postgres_fdw
 	OPTIONS (
 		host 'pg_database', 
-		dbname ${FOREIGN_DB}, 
+		dbname '${FOREIGN_DB}',
 		port '5432'
 );
 
 CREATE USER MAPPING IF NOT EXISTS FOR db_user 
 	SERVER prototype_server
 	OPTIONS (
-		USER ${FOREIGN_USER},
-		PASSWORD ${FOREIGN_PASS}
+		USER '${FOREIGN_USER}',
+		PASSWORD '${FOREIGN_PASS}'
 	);
 
 
