@@ -65,3 +65,16 @@ services:
     - 1020:5432
     links:
     - pg_database
+  etl:
+    build:
+      context: .
+      dockerfile: etl.dockerfile
+    environment:
+    - POSTGRES_USER=db_user
+    - POSTGRES_PASSWORD=db_pass
+    - POSTGRES_DB=prototype_dwh
+    - DB_PORT=pg_target_database
+    - DB_HOST=5432
+    - PERIOD=300
+    links:
+      - pg_target_database
