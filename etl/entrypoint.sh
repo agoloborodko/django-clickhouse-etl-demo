@@ -9,4 +9,8 @@ done
 
 echo "dwh started"
 
+echo "Waiting for another services..."
+sleep 12
+echo "run etl"
+
 python etl.py
