@@ -9,4 +9,4 @@ RUN pip install --upgrade pip && \
     pip install -r requirements.txt && \
     chmod -R 0777 .
 
-CMD["python etl.py"]
+ENTRYPOINT ["/home/etl/entrypoint.sh"]
