@@ -1,5 +1,6 @@
 FROM python:3
 ENV PYTHONUNBUFFERED 1
+ENV TZ="Europe/Moscow"
 
 RUN mkdir -p /home/etl
 WORKDIR /home/etl
