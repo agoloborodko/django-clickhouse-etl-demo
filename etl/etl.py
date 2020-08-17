@@ -2,7 +2,6 @@ import psycopg2
 from time import sleep
 import datetime as dt
 import os
-import pytz
 
 conn = psycopg2.connect(
     host=os.environ['DB_HOST'],
@@ -70,7 +69,7 @@ while True:
 
     cursor.execute(script_get_var_init)
     DWH_VAR_INIT_VALUE = cursor.fetchone()[0]
-    DWH_VAR_CUR_VALUE = dt.datetime.now(tz=pytz.timezone('Europe/Moscow')) - dt.timedelta(seconds=1)
+    DWH_VAR_CUR_VALUE = dt.datetime.now() - dt.timedelta(seconds=1)
 
     cursor.execute(get_script_update_meta(DWH_VAR_CUR_VALUE))
     conn.commit()
