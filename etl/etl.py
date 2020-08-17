@@ -80,4 +80,4 @@ while True:
     cursor.execute(script_update_meta_hist)
     conn.commit()
 
-    sleep(os.environ['PERIOD'])
+    sleep(int(os.environ['PERIOD']))
