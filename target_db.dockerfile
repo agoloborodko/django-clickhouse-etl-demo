@@ -1,6 +1,6 @@
 FROM library/postgres
 RUN apt-get update && apt-get -y install cron
-COPY scripts/cron_elt /etc/cron.d/cron_elt
+COPY target_database/scripts/cron_elt /etc/cron.d/cron_elt
 RUN chmod 0644 /etc/cron.d/cron_elt && \
     chmod 0777 /var/log/cron.log
 COPY target_database/docker-entrypoint-initdb.d/ /docker-entrypoint-initdb.d/
