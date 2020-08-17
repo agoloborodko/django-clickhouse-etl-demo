@@ -23,5 +23,5 @@ VALUES(
 ,   'Timestamp'
 ,   '1970-01-01'
 ,   '1970-01-01'
-,   SELECT now() - INTERVAL '1 second'
+,   now() - INTERVAL '1 second'
 );
