@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "waiting for prototype..."
+sleep 5
+echo "initialize staging area"
 psql -U ${POSTGRES_USER} -d ${POSTGRES_DB} << EOF
 CREATE EXTENSION IF NOT EXISTS postgres_fdw;
 
