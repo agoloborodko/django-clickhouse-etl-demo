@@ -17,3 +17,11 @@ CREATE TABLE IF NOT EXISTS metadata.dwh_variables_hist(
 ,	CONSTRAINT PK_dwh_variables_hist PRIMARY KEY (var_name, refresh_ts)
 );
 
+INSERT INTO metadata.dwh_variables
+VALUES(
+    'PROTOTYPE_TS'
+,   'Timestamp'
+,   '1970-01-01'
+,   '1970-01-01'
+,   SELECT now() - INTERVAL '1 second'
+);
